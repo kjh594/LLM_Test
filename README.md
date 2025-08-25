@@ -77,5 +77,49 @@ source ~/.bashrc
 echo $OPENAI_API_KEY
 ```
 
+## 3. 단계별 프로세스
+
+
+## 3-1. PubMed 논문 수집
+
+이 단계에서는 **NCBI Entrez API**를 활용하여 체계적인 논문 수집을 수행합니다.  
+총 **584개의 의학 분야 저널**을 대상으로 하며, 분야별 예시는 다음과 같습니다:
+
+- Oncology: 99개
+- Genetics: (수치 기입 필요)
+- Immunology: (수치 기입 필요)
+- Gastroenterology: 41개
+
+또한, **53개의 유전변이 관련 키워드**를 사용하여 지정한 연도에 출판된 논문을 검색합니다.
+
+---
+
+### 실행 방법
+
+#### #1a) PubMed ID 검색 (필수 매개변수만)
+```bash
+python 01_pubmed_fetching/scripts/fetch_pubmed_ids.py   --year 2023   --keywords ./01_pubmed_fetching/configs/ref/keyword_list.csv   --journal_list ./01_pubmed_fetching/configs/ref/Oncology_journal_list.csv   --email your.email@example.com   --test   # 선택사항: 테스트 모드
+```
+
+#### #1b) Medline 다운로드 (필수 매개변수만)
+```bash
+python 01_pubmed_fetching/scripts/download_medline.py   --year 2023   --journal_category oncology   --email your.email@example.com
+```
+
+---
+
+### 결과 구조 (자동 생성)
+```
+output/2023/
+├── ids/
+│   └── oncology_2023_study-id_n_20.txt   # 자동 생성
+└── medline/
+    └── oncology/
+        ├── pmid_12345678.medline
+        ├── pmid_87654321.medline
+        └── ...
+```
+
+
 
 
