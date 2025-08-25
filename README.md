@@ -94,21 +94,22 @@ echo $OPENAI_API_KEY
 
 ---
 
-### 실행 방법
+- 실행 방법
 
-#### #1a) PubMed ID 검색 (필수 매개변수만)
+#### 1a) PubMed ID 검색 (필수 매개변수만)
 ```bash
 python 01_pubmed_fetching/scripts/fetch_pubmed_ids.py   --year 2023   --keywords ./01_pubmed_fetching/configs/ref/keyword_list.csv   --journal_list ./01_pubmed_fetching/configs/ref/Oncology_journal_list.csv   --email your.email@example.com   --test   # 선택사항: 테스트 모드
 ```
 
-#### #1b) Medline 다운로드 (필수 매개변수만)
+#### 1b) Medline 다운로드 (필수 매개변수만)
 ```bash
 python 01_pubmed_fetching/scripts/download_medline.py   --year 2023   --journal_category oncology   --email your.email@example.com
 ```
 
 ---
 
-### 결과 구조 (자동 생성)
+- 결과 구조 (자동 생성)
+
 ```
 output/2023/
 ├── ids/
@@ -119,6 +120,15 @@ output/2023/
         ├── pmid_87654321.medline
         └── ...
 ```
+
+# PubMed 검색 쿼리 예시
+def build_search_query(keyword: str, journal: str, year: int) -> str:
+    return (f'({keyword}) AND ({journal})[Journal] AND '
+            f'({year}/01/01[Entrez Date] : {year}/12/31[Entrez Date])')
+
+# API 속도 제한 준수
+def respect_api_limits():
+    time.sleep(0.34)  # 초당 3회 제한 (1/3 = 0.33초)
 
 
 
