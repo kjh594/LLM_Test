@@ -3,8 +3,8 @@
 ## 1. 개요
 
 ### 1.1 목적
-본 프로젝트는 유전변이 해석에 특화된 거대언어모델(LLM)의 개발, 구축, 운영에 대한 표준 절차를 제시하여  
-일관성 있고 안정적인 AI 시스템 구축을 목표로 합니다.
+본 프로젝트는 유전변이 해석을 위한 거대언어모델(LLM)의 개발, 구축, 운영에 필요한 표준 절차를 마련하고,
+이를 통해 일관성과 안정성을 갖춘 AI 시스템을 구현하는 것을 목표로 합니다.
 
 ### 1.2 용어 정의
 - **LLM (Large Language Model)**: 거대언어모델, 대규모 텍스트 데이터로 학습된 언어 처리 AI 모델  
@@ -20,7 +20,35 @@
 
 ### 1.3 전체 구성도
 
-![전체 구성도](https://raw.githubusercontent.com/kjh594/LLM_Test/main/image/diagram.png)
+```mermaid
+flowchart TD
+
+  subgraph ENV["모델 실행 환경 준비"]
+    A1[Ollama 설치 및 LLaMA3 모델 다운로드]
+    A2[API 서버 실행]
+    A3[환경변수 설정 (OpenAI API 키)]
+  end
+
+  subgraph DATA["데이터 수집 및 전처리"]
+    B1[PubMed 논문 수집\n(Entrez API → Medline 다운로드)]
+    B2[초록 추출\n(BioPython Medline Parser)]
+  end
+
+  subgraph PROCESS["정보 추출 및 가공"]
+    C1[NER 처리\n(GPT-4o-mini: Disease, Gene, Variant)]
+    C2[한국어 번역 및 요약\n(GPT-4o-mini)]
+  end
+
+  subgraph OUTPUT["출력 결과 저장"]
+    D1[ids/]
+    D2[medline/]
+    D3[abstracts/]
+    D4[ner/]
+    D5[korean/]
+  end
+
+  ENV --> DATA --> PROCESS --> OUTPUT
+```
 
 
 ## 2. 데이터 준비 절차
