@@ -181,5 +181,54 @@ stats = {
 }
 ```
 
+### 3-3. NER 처리
+
+이 단계에서는 **OpenAI GPT-4o-mini** 모델을 활용하여 의학 논문 초록에서 세 가지 핵심 개체를 추출합니다:
+
+- **Disease**: 질병명  
+- **Gene**: 유전자명  
+- **Variant**: 유전변이명  
+
+---
+
+- 실행 명령어
+
+모든 연도의 초록 파일을 자동으로 찾아 **NER 처리**를 수행합니다:
+
+```bash
+python 03_ner_processing/extract_entities.py \
+  --model gpt-4o-mini \   # 선택사항: 모델 지정
+  --resume                # 선택사항: 중단된 작업 재개
+```
+
+- 결과 파일 형식(JSON 예시)
+
+
+```json
+{
+  "disease": ["melanoma", "colorectal cancer"],
+  "gene": ["KRAS", "TP53", "BRAF"],
+  "variant": ["G12D", "R273H", "V600E"]
+}
+```
+
+- NER 프롬프트 템플릿
+
+```python
+NER_PROMPT = """
+아래 의학 논문 초록을 읽고 Named Entity Recognition을 수행해주세요.
+
+추출할 개체명 유형:
+- Disease: 질병명
+- Gene: 유전자명
+- Variant: 유전변이명
+
+출력 형식: JSON (텍스트 없이)
+{"disease": [], "gene": [], "variant": []}
+
+초록: {abstract}
+"""
+```
+
 
 
