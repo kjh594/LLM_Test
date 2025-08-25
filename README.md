@@ -123,14 +123,19 @@ output/2023/
 ```
 
 - PubMed 검색 쿼리 예시
+
+```bash
 def build_search_query(keyword: str, journal: str, year: int) -> str:
     return (f'({keyword}) AND ({journal})[Journal] AND '
             f'({year}/01/01[Entrez Date] : {year}/12/31[Entrez Date])')
+```
 
 - API 속도 제한 준수
+
+```bash
 def respect_api_limits():
     time.sleep(0.34)  # 초당 3회 제한 (1/3 = 0.33초)
-
+```
 
 
 
