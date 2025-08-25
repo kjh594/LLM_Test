@@ -2,11 +2,11 @@
 
 ## 1. 개요
 
-## 1.1 목적
+### 1.1 목적
 본 프로젝트는 유전변이 해석에 특화된 거대언어모델(LLM)의 개발, 구축, 운영에 대한 표준 절차를 제시하여  
 일관성 있고 안정적인 AI 시스템 구축을 목표로 합니다.
 
-## 1.2 용어 정의
+### 1.2 용어 정의
 - **LLM (Large Language Model)**: 거대언어모델, 대규모 텍스트 데이터로 학습된 언어 처리 AI 모델  
 - **Fine-tuning**: 사전 훈련된 모델을 특정 도메인에 맞게 추가 학습시키는 과정  
 - **LoRA (Low-Rank Adaptation)**: 기존 모델의 가중치를 고정하고 저차원 행렬만 학습하는 효율적인 파인튜닝 기법  
@@ -18,7 +18,7 @@
 - **Variant**: 유전변이, 기존 게놈 서열과 다른 DNA 서열  
 - **Annotation**: 주석, 유전변이의 의학적 의미를 해석한 설명  
 
-## 1.3 전체 구성도
+### 1.3 전체 구성도
 
 ![전체 구성도](https://raw.githubusercontent.com/kjh594/LLM_Test/main/image/diagram.png)
 
@@ -73,6 +73,7 @@ echo 'export OPENAI_API_KEY="your-openai-api-key-here"' >> ~/.bashrc
 source ~/.bashrc
 ```
 - API 키 확인
+
 ```bash
 echo $OPENAI_API_KEY
 ```
@@ -80,7 +81,7 @@ echo $OPENAI_API_KEY
 ## 3. 단계별 프로세스
 
 
-## 3-1. PubMed 논문 수집
+### 3-1. PubMed 논문 수집
 
 이 단계에서는 **NCBI Entrez API**를 활용하여 체계적인 논문 수집을 수행합니다.  
 총 **584개의 의학 분야 저널**을 대상으로 하며, 분야별 예시는 다음과 같습니다:
@@ -121,12 +122,12 @@ output/2023/
         └── ...
 ```
 
-# PubMed 검색 쿼리 예시
+- PubMed 검색 쿼리 예시
 def build_search_query(keyword: str, journal: str, year: int) -> str:
     return (f'({keyword}) AND ({journal})[Journal] AND '
             f'({year}/01/01[Entrez Date] : {year}/12/31[Entrez Date])')
 
-# API 속도 제한 준수
+- API 속도 제한 준수
 def respect_api_limits():
     time.sleep(0.34)  # 초당 3회 제한 (1/3 = 0.33초)
 
