@@ -30,7 +30,20 @@
 ### 2.1 모델 실행 환경
 
 #### 2.1.1 Ollama 설치 및 LLaMA3 모델 준비
-- [Ollama 공식 페이지](https://ollama.com/)에서 설치  
+- [Ollama 공식 페이지](https://ollama.com/)에서 설치
+
+Homebrew를 사용하여 설치:
+
+```bash
+brew install ollama
+```
+
+- 설치 후 확인:
+
+```bash
+ollama --version
+```
+
 - 설치 후 모델 다운로드:
 
 ```bash
