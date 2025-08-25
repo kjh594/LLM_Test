@@ -20,35 +20,7 @@
 
 ### 1.3 전체 구성도
 
-```mermaid
-flowchart TD
-
-  subgraph ENV["모델 실행 환경 준비"]
-    A1[Ollama 설치 및 LLaMA3 모델 다운로드]
-    A2[API 서버 실행]
-    A3[환경변수 설정 (OpenAI API 키)]
-  end
-
-  subgraph DATA["데이터 수집 및 전처리"]
-    B1[PubMed 논문 수집\n(Entrez API → Medline 다운로드)]
-    B2[초록 추출\n(BioPython Medline Parser)]
-  end
-
-  subgraph PROCESS["정보 추출 및 가공"]
-    C1[NER 처리\n(GPT-4o-mini: Disease, Gene, Variant)]
-    C2[한국어 번역 및 요약\n(GPT-4o-mini)]
-  end
-
-  subgraph OUTPUT["출력 결과 저장"]
-    D1[ids/]
-    D2[medline/]
-    D3[abstracts/]
-    D4[ner/]
-    D5[korean/]
-  end
-
-  ENV --> DATA --> PROCESS --> OUTPUT
-```
+![전체 구성도](https://raw.githubusercontent.com/kjh594/LLM_Test/main/image/diagram.png)
 
 
 ## 2. 데이터 준비 절차
