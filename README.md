@@ -204,17 +204,14 @@ python 03_ner_processing/extract_entities.py \
 - 결과 파일 형식(JSON 예시)
 
 
-```json
+```bash
 {
   "disease": ["melanoma", "colorectal cancer"],
   "gene": ["KRAS", "TP53", "BRAF"],
   "variant": ["G12D", "R273H", "V600E"]
 }
-```
 
-- NER 프롬프트 템플릿
-
-```python
+# NER 프롬프트 형식
 NER_PROMPT = """
 아래 의학 논문 초록을 읽고 Named Entity Recognition을 수행해주세요.
 
@@ -230,5 +227,31 @@ NER_PROMPT = """
 """
 ```
 
+### 3-4. 한국어 번역
 
+이 단계에서는 **ChatGPT (GPT-4o-mini 모델)**를 활용하여 필터링된 영문 초록을 
+의학적 정확성을 유지하면서 한국어로 번역 및 요약합니다.  
+
+---
+
+- 실행 명령어
+
+모든 연도의 필터링된 변이 데이터를 자동으로 찾아 한국어 번역 수행:
+
+```bash
+python 05_korean_annotation/generate_annotations.py \
+  --model gpt-4o-mini \   # 선택사항: 모델 지정
+  --resume                # 선택사항: 중단된 작업 재개
+
+```
+
+- 결과 구조
+
+```bash
+output/2023/korean/
+├── 12345678.txt     # 한국어 요약 (PMID 기반 파일명)
+├── 87654321.txt
+├── 11111111.txt
+└── ...
+```
 
