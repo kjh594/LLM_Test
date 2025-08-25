@@ -32,7 +32,7 @@
 #### 2.1.1 Ollama 설치 및 LLaMA3 모델 준비
 - [Ollama 공식 페이지](https://ollama.com/)에서 설치
 
-Homebrew를 사용하여 설치:
+- Homebrew를 사용하여 설치:
 
 ```bash
 brew install ollama
@@ -42,12 +42,6 @@ brew install ollama
 
 ```bash
 ollama --version
-```
-
-- 설치 후 모델 다운로드:
-
-```bash
-ollama pull llama3
 ```
 
 - 로컬 API 서버 실행:
@@ -63,6 +57,13 @@ curl http://localhost:11434/api/generate -d '{
   "model":"llama3",
   "prompt":"hello"
 }'
+```
+
+- 설치 후 모델 다운로드:
+##### ollama server 실행 상태에서 진행
+
+```bash
+ollama pull llama3
 ```
 
 - 테스트 호출
