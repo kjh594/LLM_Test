@@ -50,28 +50,32 @@ curl http://localhost:11434/api/generate -d '{
 }'
 ```
 
-#### 2.1.2 Python 환경 준비
-- 가상환경 생성(선택):
+- 테스트 호출
 
 ```bash
-python -m venv .venv
-source .venv/bin/activate   # Windows: .venv\Scripts\activate
+ollama run llama3
 ```
 
-- 필수 라이브러리 설치:
+#### 2.1.2 환경변수 설정
+
+파이프라인 실행 전 다음 API 키를 환경변수로 설정해야 합니다:
+
+- OpenAI API 키 설정 (필수)
 
 ```bash
-pip install requests pandas openpyxl chromadb pydantic
+export OPENAI_API_KEY="your-openai-api-key-here"
 ```
 
-> `openpyxl`: 엑셀 저장/읽기용  
-> `chromadb`: 임베딩 벡터 저장 및 검색  
-> `requests`: Ollama API 연동  
-
-#### 2.1.3 환경 변수(선택)
+- ~/.bashrc 또는 ~/.zshrc에 추가
 
 ```bash
-export OLLAMA_HOST=http://localhost:11434
-export DATA_DIR=./data
-export VECTOR_DB=./chroma_db
+echo 'export OPENAI_API_KEY="your-openai-api-key-here"' >> ~/.bashrc
+source ~/.bashrc
 ```
+- API 키 확인
+```bash
+echo $OPENAI_API_KEY
+```
+
+
+
