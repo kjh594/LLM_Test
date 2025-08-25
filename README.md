@@ -28,8 +28,50 @@
 ### 2.1 모델 실행 환경
 
 #### 2.1.1 Ollama 설치 및 LLaMA3 모델 준비
-- [Ollama 공식 페이지](https://ollama.com/)에서 설치
+- [Ollama 공식 페이지](https://ollama.com/)에서 설치  
 - 설치 후 모델 다운로드:
+
 ```bash
 ollama pull llama3
+```
 
+- 로컬 API 서버 실행:
+
+```bash
+ollama serve
+```
+
+- 동작 확인(예시):
+
+```bash
+curl http://localhost:11434/api/generate -d '{
+  "model":"llama3",
+  "prompt":"hello"
+}'
+```
+
+#### 2.1.2 Python 환경 준비
+- 가상환경 생성(선택):
+
+```bash
+python -m venv .venv
+source .venv/bin/activate   # Windows: .venv\Scripts\activate
+```
+
+- 필수 라이브러리 설치:
+
+```bash
+pip install requests pandas openpyxl chromadb pydantic
+```
+
+> `openpyxl`: 엑셀 저장/읽기용  
+> `chromadb`: 임베딩 벡터 저장 및 검색  
+> `requests`: Ollama API 연동  
+
+#### 2.1.3 환경 변수(선택)
+
+```bash
+export OLLAMA_HOST=http://localhost:11434
+export DATA_DIR=./data
+export VECTOR_DB=./chroma_db
+```
