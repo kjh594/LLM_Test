@@ -20,7 +20,7 @@
 
 ### 1.3 전체 구성도
 
-![전체 구성도](https://raw.githubusercontent.com/kjh594/LLM_Test/main/image/diagram.png)
+![전체 구성도](https://raw.githubusercontent.com/kjh594/LLM_Test/main/image/pipeline_diagram.svg)
 
 
 ## 2. 데이터 준비 절차
