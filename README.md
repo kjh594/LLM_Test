@@ -18,10 +18,6 @@
 - **Variant**: 유전변이, 기존 게놈 서열과 다른 DNA 서열  
 - **Annotation**: 주석, 유전변이의 의학적 의미를 해석한 설명  
 
-### 1.3 전체 구성도
-
-![전체 구성도](https://raw.githubusercontent.com/kjh594/LLM_Test/main/image/pipeline_diagram.svg)
-
 
 ## 2. 데이터 준비 절차
 
