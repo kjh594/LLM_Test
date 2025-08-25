@@ -137,5 +137,49 @@ def respect_api_limits():
     time.sleep(0.34)  # 초당 3회 제한 (1/3 = 0.33초)
 ```
 
+### 3-2. 텍스트 추출
+
+이 단계에서는 **BioPython의 Medline 파서**를 사용하여 다운로드된 파일에서 **초록(Abstract) 텍스트만 추출**합니다.  
+
+---
+
+- 실행 명령어
+
+모든 연도의 Medline 파일을 자동으로 찾아 처리합니다 (매개변수 없음):
+
+```bash
+python 02_text_extraction/extract_abstracts.py
+```
+- 결과 구조
+
+```bash
+output/2023/abstracts/
+├── pmid_12345678.txt
+├── pmid_87654321.txt
+├── pmid_11111111.txt
+└── ...
+```
+
+- python 코드 예시
+
+```bash
+def extract_abstract(medline_data: dict) -> str:
+    """Medline 데이터에서 초록 추출"""
+    abstract = medline_data.get('AB')
+    if isinstance(abstract, list):
+        return ' '.join(abstract)
+    return abstract if abstract else ""
+
+# 처리 통계 추적
+stats = {
+    'total_files': 0,
+    'processed': 0,
+    'abstracts_found': 0,
+    'no_abstract': 0,
+    'errors': 0,
+    'skipped': 0
+}
+```
+
 
 
