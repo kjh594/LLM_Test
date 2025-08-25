@@ -60,6 +60,7 @@ curl http://localhost:11434/api/generate -d '{
 ```
 
 - 설치 후 모델 다운로드:
+
 ##### ollama server 실행 상태에서 진행
 
 ```bash
