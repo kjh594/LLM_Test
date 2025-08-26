@@ -21,8 +21,9 @@
 
 ## 1.3 전체 구성도
 
-![전체 구성도](<img src="https://raw.githubusercontent.com/kjh594/LLM_Test/main/image/ChatGPT_image.png" style="width:40%;">
-
+<div align="center">
+<img src="https://raw.githubusercontent.com/kjh594/LLM_Test/main/image/ChatGPT_image.png" style="width:40%;">
+</div>
 
 ---
 
