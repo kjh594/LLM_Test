@@ -39,6 +39,8 @@
 ```bash
 brew install ollama
 ```
+![설치](https://raw.githubusercontent.com/kjh594/LLM_Test/main/images/ollama_install.png)
+
 
 - 설치 후 확인:
 
